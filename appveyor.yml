@@ -2,13 +2,17 @@ version: 0.0.{build}
 image: Visual Studio 2017
 configuration: Debug
 platform:
-- x86
-- x64
-- ARM
+  - x86
+  - x64
+  - ARM
 before_build:
-- nuget restore
+  - nuget restore
 build:
   project: Quantum.sln
   parallel: true
   verbosity: minimal
+test:
+  assemblies:
+    only:
+      - Spark.Test.exe
 deploy: off
