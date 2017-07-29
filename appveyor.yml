@@ -1,0 +1,12 @@
+version: 0.0.{build}
+image: Visual Studio 2017
+configuration: Release
+platform:
+- x86
+- x64
+- ARM
+build:
+  project: Quantum.sln
+  parallel: true
+  verbosity: minimal
+deploy: off
