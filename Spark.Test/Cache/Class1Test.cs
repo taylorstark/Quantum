@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using NSubstitute;
+using Xunit;
 
 namespace Spark.Test.Cache
 {
@@ -7,7 +9,10 @@ namespace Spark.Test.Cache
         [Fact]
         public void Test()
         {
-            Assert.Equal("H", new Class1().Blah());
+            var test = Substitute.For<IList<object>>();
+            test.Contains(Arg.Any<object>()).Returns(true);
+            Assert.True(test.Contains(new object()));
+            Assert.Equal("Hi", new Class1().Blah());
         }
     }
 }
