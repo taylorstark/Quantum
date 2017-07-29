@@ -5,6 +5,8 @@ platform:
 - x86
 - x64
 - ARM
+before_build:
+- nuget restore
 build:
   project: Quantum.sln
   parallel: true
