@@ -64,10 +64,10 @@ namespace Spark.Test.Cache
         public async Task ProxyGetKeysAsync()
         {
             var cache = Substitute.For<IAsyncCache<int, int>>();
-            cache.GetKeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int> { 1, 2 }));
+            cache.KeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int> { 1, 2 }));
             var decorator = new TestAsyncCacheDecorator<int, int>(cache);
             
-            Assert.Equal(new List<int> { 1, 2 }, await decorator.GetKeysAsync());
+            Assert.Equal(new List<int> { 1, 2 }, await decorator.KeysAsync());
         }
 
         [Fact]

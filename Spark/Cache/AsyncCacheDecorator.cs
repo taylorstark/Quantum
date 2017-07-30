@@ -32,14 +32,14 @@ namespace Spark.Cache
             return Cache.GetAsync(key);
         }
 
-        public ValueTask<ICollection<TKey>> GetKeysAsync()
-        {
-            return Cache.GetKeysAsync();
-        }
-
         public ValueTask<bool> IsEmptyAsync()
         {
             return Cache.IsEmptyAsync();
+        }
+
+        public ValueTask<ICollection<TKey>> KeysAsync()
+        {
+            return Cache.KeysAsync();
         }
 
         public virtual ValueTask<bool> RemoveAsync(TKey key)

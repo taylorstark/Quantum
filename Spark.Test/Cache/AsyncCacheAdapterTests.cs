@@ -63,7 +63,7 @@ namespace Spark.Test.Cache
             cache.Keys.Returns(new List<int> { 1, 2 });
             var adapter = new AsyncCacheAdapter<int, int>(cache);
 
-            Assert.Equal(new List<int> { 1, 2}, await adapter.GetKeysAsync());
+            Assert.Equal(new List<int> { 1, 2 }, await adapter.KeysAsync());
         }
 
         [Fact]

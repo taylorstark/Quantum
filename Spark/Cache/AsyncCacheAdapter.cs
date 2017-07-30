@@ -35,14 +35,14 @@ namespace Spark.Cache
             return new ValueTask<(bool, TValue)>(ValueTuple.Create(exists, value));
         }
 
-        public ValueTask<ICollection<TKey>> GetKeysAsync()
-        {
-            return new ValueTask<ICollection<TKey>>(Cache.Keys);
-        }
-
         public ValueTask<bool> IsEmptyAsync()
         {
             return new ValueTask<bool>(Cache.IsEmpty);
+        }
+
+        public ValueTask<ICollection<TKey>> KeysAsync()
+        {
+            return new ValueTask<ICollection<TKey>>(Cache.Keys);
         }
 
         public ValueTask<bool> RemoveAsync(TKey key)

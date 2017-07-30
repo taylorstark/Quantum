@@ -37,7 +37,7 @@ namespace Spark.Test.Cache
         public async Task ClearEmptyCacheAsync()
         {
             var cache = Substitute.For<IAsyncCache<int, int>>();
-            cache.GetKeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int>()));
+            cache.KeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int>()));
             cache.RemoveAsync(Arg.Any<int>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
@@ -49,7 +49,7 @@ namespace Spark.Test.Cache
         public async Task ClearCacheAsync()
         {
             var cache = Substitute.For<IAsyncCache<int, int>>();
-            cache.GetKeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int> { 1, 2 }));
+            cache.KeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int> { 1, 2 }));
             cache.RemoveAsync(Arg.Any<int>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
