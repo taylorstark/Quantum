@@ -37,25 +37,25 @@ namespace Spark.Test.Cache
         public async Task ClearEmptyCacheAsync()
         {
             var cache = Substitute.For<IAsyncCache<uint, uint>>();
-            cache.Keys.Returns(new ValueTask<ICollection<uint>>(new List<uint>()));
-            cache.Remove(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
+            cache.GetKeysAsync().Returns(new ValueTask<ICollection<uint>>(new List<uint>()));
+            cache.RemoveAsync(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
 
-            await cache.DidNotReceive().Remove(Arg.Any<uint>());
+            await cache.DidNotReceive().RemoveAsync(Arg.Any<uint>());
         }
 
         [Fact]
         public async Task ClearCacheAsync()
         {
             var cache = Substitute.For<IAsyncCache<uint, uint>>();
-            cache.Keys.Returns(new ValueTask<ICollection<uint>>(new List<uint> { 1, 2 }));
-            cache.Remove(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
+            cache.GetKeysAsync().Returns(new ValueTask<ICollection<uint>>(new List<uint> { 1, 2 }));
+            cache.RemoveAsync(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
 
-            await cache.Received().Remove(Arg.Is(1U));
-            await cache.Received().Remove(Arg.Is(2U));
+            await cache.Received().RemoveAsync(Arg.Is(1U));
+            await cache.Received().RemoveAsync(Arg.Is(2U));
         }
     }
 }

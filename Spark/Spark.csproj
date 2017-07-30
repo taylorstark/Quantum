@@ -106,6 +106,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cache\AsyncCacheAdapter.cs" />
+    <Compile Include="Cache\AsyncCacheDecorator.cs" />
     <Compile Include="Cache\CacheExtensions.cs" />
     <Compile Include="Cache\IAsyncCache.cs" />
     <Compile Include="Cache\ICache.cs" />

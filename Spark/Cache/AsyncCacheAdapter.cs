@@ -13,7 +13,7 @@ namespace Spark.Cache
             Cache = cache;
         }
 
-        public Task Add(TKey key, TValue value)
+        public Task AddAsync(TKey key, TValue value)
         {
             Cache.Add(key, value);
             return Task.CompletedTask;
@@ -24,12 +24,12 @@ namespace Spark.Cache
             return new ValueTask<uint>(Cache.Count);
         }
 
-        public ValueTask<bool> Contains(TKey key)
+        public ValueTask<bool> ContainsAsync(TKey key)
         {
             return new ValueTask<bool>(Cache.Contains(key));
         }
 
-        public ValueTask<(bool exists, TValue value)> Get(TKey key)
+        public ValueTask<(bool exists, TValue value)> GetAsync(TKey key)
         {
             var exists = Cache.Get(key, out TValue value);
             return new ValueTask<(bool, TValue)>(ValueTuple.Create(exists, value));
@@ -45,7 +45,7 @@ namespace Spark.Cache
             return new ValueTask<bool>(Cache.IsEmpty);
         }
 
-        public ValueTask<bool> Remove(TKey key)
+        public ValueTask<bool> RemoveAsync(TKey key)
         {
             return new ValueTask<bool>(Cache.Remove(key));
         }

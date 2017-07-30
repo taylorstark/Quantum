@@ -15,7 +15,7 @@ namespace Spark.Cache
 
         public static async Task Clear<TKey, TValue>(this IAsyncCache<TKey, TValue> cache)
         {
-            await Task.WhenAll(from key in await cache.Keys select cache.Remove(key).AsTask());
+            await Task.WhenAll(from key in await cache.GetKeysAsync() select cache.RemoveAsync(key).AsTask());
         }
     }
 }
