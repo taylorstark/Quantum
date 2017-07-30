@@ -9,8 +9,8 @@ namespace Spark.Cache
         ValueTask<uint> CountAsync();
         ValueTask<bool> Contains(TKey key);
         ValueTask<(bool exists, TValue value)> Get(TKey key);
-        ValueTask<bool> IsEmpty { get; }
-        ValueTask<ICollection<TKey>> Keys { get; }
+        ValueTask<ICollection<TKey>> GetKeysAsync();
+        ValueTask<bool> IsEmptyAsync();
         ValueTask<bool> Remove(TKey key);
     }
 }
