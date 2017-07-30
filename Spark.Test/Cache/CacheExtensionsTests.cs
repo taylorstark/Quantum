@@ -11,51 +11,51 @@ namespace Spark.Test.Cache
         [Fact]
         public void ClearEmptyCache()
         {
-            var cache = Substitute.For<ICache<uint, uint>>();
-            cache.Keys.Returns(new List<uint>());
-            cache.Remove(Arg.Any<uint>()).Returns(true);
+            var cache = Substitute.For<ICache<int, int>>();
+            cache.Keys.Returns(new List<int>());
+            cache.Remove(Arg.Any<int>()).Returns(true);
 
             cache.Clear();
 
-            cache.DidNotReceive().Remove(Arg.Any<uint>());
+            cache.DidNotReceive().Remove(Arg.Any<int>());
         }
 
         [Fact]
         public void ClearCache()
         {
-            var cache = Substitute.For<ICache<uint, uint>>();
-            cache.Keys.Returns(new List<uint> { 1, 2 });
-            cache.Remove(Arg.Any<uint>()).Returns(true);
+            var cache = Substitute.For<ICache<int, int>>();
+            cache.Keys.Returns(new List<int> { 1, 2 });
+            cache.Remove(Arg.Any<int>()).Returns(true);
 
             cache.Clear();
 
-            cache.Received().Remove(Arg.Is(1U));
-            cache.Received().Remove(Arg.Is(2U));
+            cache.Received().Remove(Arg.Is(1));
+            cache.Received().Remove(Arg.Is(2));
         }
 
         [Fact]
         public async Task ClearEmptyCacheAsync()
         {
-            var cache = Substitute.For<IAsyncCache<uint, uint>>();
-            cache.GetKeysAsync().Returns(new ValueTask<ICollection<uint>>(new List<uint>()));
-            cache.RemoveAsync(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
+            var cache = Substitute.For<IAsyncCache<int, int>>();
+            cache.GetKeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int>()));
+            cache.RemoveAsync(Arg.Any<int>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
 
-            await cache.DidNotReceive().RemoveAsync(Arg.Any<uint>());
+            await cache.DidNotReceive().RemoveAsync(Arg.Any<int>());
         }
 
         [Fact]
         public async Task ClearCacheAsync()
         {
-            var cache = Substitute.For<IAsyncCache<uint, uint>>();
-            cache.GetKeysAsync().Returns(new ValueTask<ICollection<uint>>(new List<uint> { 1, 2 }));
-            cache.RemoveAsync(Arg.Any<uint>()).Returns(new ValueTask<bool>(true));
+            var cache = Substitute.For<IAsyncCache<int, int>>();
+            cache.GetKeysAsync().Returns(new ValueTask<ICollection<int>>(new List<int> { 1, 2 }));
+            cache.RemoveAsync(Arg.Any<int>()).Returns(new ValueTask<bool>(true));
 
             await cache.Clear();
 
-            await cache.Received().RemoveAsync(Arg.Is(1U));
-            await cache.Received().RemoveAsync(Arg.Is(2U));
+            await cache.Received().RemoveAsync(Arg.Is(1));
+            await cache.Received().RemoveAsync(Arg.Is(2));
         }
     }
 }
