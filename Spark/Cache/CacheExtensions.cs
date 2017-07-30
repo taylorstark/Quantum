@@ -1,4 +1,7 @@
-﻿namespace Spark.Cache
+﻿using System.Linq;
+using System.Threading.Tasks;
+
+namespace Spark.Cache
 {
     public static class CacheExtensions
     {
@@ -8,6 +11,11 @@
             {
                 cache.Remove(key);
             }
+        }
+
+        public static async Task Clear<TKey, TValue>(this IAsyncCache<TKey, TValue> cache)
+        {
+            await Task.WhenAll(from key in await cache.Keys select cache.Remove(key).AsTask());
         }
     }
 }
