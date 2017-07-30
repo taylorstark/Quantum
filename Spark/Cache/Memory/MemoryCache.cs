@@ -9,11 +9,8 @@ namespace Spark.Cache.Memory
         private ConcurrentDictionary<TKey, TValue> Cache { get; }
 
         public uint Count => (uint)Cache.Count;
-
         public bool IsEmpty => Cache.IsEmpty;
-
         public ICollection<TKey> Keys => Cache.Keys;
-
         public ICollection<TValue> Values => Cache.Values;
 
         public MemoryCache()
