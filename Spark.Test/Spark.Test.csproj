@@ -98,6 +98,7 @@
     <Compile Include="Cache\AsyncCacheAdapterTests.cs" />
     <Compile Include="Cache\AsyncCacheDecoratorTests.cs" />
     <Compile Include="Cache\CacheExtensionsTests.cs" />
+    <Compile Include="Cache\Filter\AsyncCacheFilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
