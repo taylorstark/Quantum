@@ -110,7 +110,6 @@
     <Compile Include="Cache\AsyncCacheDecorator.cs" />
     <Compile Include="Cache\CacheExtensions.cs" />
     <Compile Include="Cache\Filter\AsyncCacheFilter.cs" />
-    <Compile Include="Cache\Filter\AsyncFilteredCache.cs" />
     <Compile Include="Cache\Filter\FilterAction.cs" />
     <Compile Include="Cache\Filter\FilterResult.cs" />
     <Compile Include="Cache\Filter\RundownProtection.cs" />
