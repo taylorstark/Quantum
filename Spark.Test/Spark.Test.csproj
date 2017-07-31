@@ -99,6 +99,7 @@
     <Compile Include="Cache\AsyncCacheDecoratorTests.cs" />
     <Compile Include="Cache\CacheExtensionsTests.cs" />
     <Compile Include="Cache\Filter\AsyncCacheFilterTests.cs" />
+    <Compile Include="Cache\Filter\RundownProtectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

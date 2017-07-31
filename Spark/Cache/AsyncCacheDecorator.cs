@@ -22,7 +22,7 @@ namespace Spark.Cache
             return Cache.CountAsync();
         }
 
-        public virtual ValueTask<bool> ContainsAsync(TKey key)
+        public ValueTask<bool> ContainsAsync(TKey key)
         {
             return Cache.ContainsAsync(key);
         }
